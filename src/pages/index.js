@@ -3,12 +3,11 @@ import { Transition, Menu } from '@headlessui/react'
 import Navbar from "@components/Navbar"
 import Image from 'next/image'
 import logoimg from "@publics/pic1.jpg"
-import { Listbox } from "@headlessui/react"
-import { Fragment } from "react-is"
-import { CheckIcon } from '@heroicons/react/solid'
+
+
 
 export default function Home() {
-  const room = [ "hong", "honghong", "boxbox"]
+  const room = [ {id:1,roomn:"hong"}, {id:2,roomn:"honghong"}, {id:3,roomn:"boxbox"}]
   const floor = [1, 2, 3, 4, 5, 6]
   const [selectroom, setselectroom] = useState(room[0])
 
@@ -22,11 +21,11 @@ export default function Home() {
             <div className="mt-8 ml-20 flex flex-row ">
               <select className="w-2/5 mr-10" required>
                 <option value="" disabled selected>เลือกห้อง</option>
-                {room.map((option) => (<option value={option}>{option}</option>))}
+                {room.map((option) => (<option key={room.id} value={option.roomn}>{option.roomn}</option>))}
               </select>
               <select className="w-2/5" required>
                 <option value="" disabled selected>เลือกชั้น</option>
-                {floor.map((option) => (<option value={option}>{option}</option>))}
+                {floor.map((option) => (<option key={option} value={option}>{option}</option>))}
               </select>
             </div>
             <div className="relative mt-10 ml-48">
@@ -63,7 +62,7 @@ export default function Home() {
               <textarea rows="5" cols="40"></textarea>
             </div>
             <div className="mt-8">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
             submit</button>
 
             </div>
