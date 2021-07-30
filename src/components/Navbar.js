@@ -13,7 +13,7 @@ export default function Navbar(){
         <div className="flex p-6 pl-0.5 mr-12 font-medium text-xl">
           Reserve <br />System
         </div>
-        <div className="p-6 pt-10 ml-10">จองห้องประชุม</div>
+        
         
         <div className="p-6 m-5 ml-auto border-r-2">Sign in</div>
         <div className="p-6 mr-5 mt-5 mb-5">Sign up</div>
