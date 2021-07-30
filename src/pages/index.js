@@ -22,7 +22,7 @@ export default function Home() {
 
   ]
   const [startDate, setStartDate] = useState(new Date());
-  const [selectroom, setselectroom] = useState(room[0])
+  
 
   return (
     <div className="flex flex-col items-center  w-full h-screen">
