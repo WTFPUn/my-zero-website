@@ -3,7 +3,7 @@ import { Transition, Dialog } from "@headlessui/react"
 import * as Util from '@utils/common'
 import Modal from "@components/Modal"
 
-export default function Login() {
+export default function Signup() {
   const [isOpen, setIsOpen] = useState(false)
   const [signupform, setsignupform] = useState({ username: '', password: '', confirmpassword: '', email: '', fname: '', lname: '' })
 

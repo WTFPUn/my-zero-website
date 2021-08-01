@@ -2,11 +2,12 @@ import { useEffect, useState } from "react"
 import { Transition, Menu } from '@headlessui/react'
 import Image from 'next/image'
 import logoimg from "@publics/favicon.ico"
-import Login from "@components/Login"
-import { Popover } from '@headlessui/react'
+import Signup from "@components/Signup"
+import Signin from "@components/Signin"
+
 
 export default function Navbar(){
-    const [isMenuHovered, setIsMenuHovered] = useState(false)
+    
     
 
     return (
@@ -17,8 +18,8 @@ export default function Navbar(){
         </div>
         
         
-        <div className="p-6 m-5 ml-auto border-r-2">Sign in</div>
-        <div className=" transition duration-500 transform hover:scale-125"> <Login/></div>
+        <div className="p-6 m-5 ml-auto border-r-2"><Signin/></div>
+        <div className=" transition duration-500 transform hover:scale-125"> <Signup/></div>
 
       </div >
     ) 
