@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { Transition, Menu } from '@headlessui/react'
 import Navbar from "@components/Navbar"
 import Image from 'next/image'
-import logoimg from "@publics/pic1.jpg"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import subDays from "date-fns/subDays"
@@ -25,7 +24,7 @@ export default function Home() {
   { id: 5, peroid: "18:00-20:00 น." },
   { id: 6, peroid: "20:00-22:00 น." },
  ]
-  const [rsform,setrsform ]=useState({ email: '', fname: '' ,lname:'',telnum:'',reason:''})
+  const [rsform,setrsform ]=useState({ email: '', fname: '' ,lname:'',telnum:'',reason:'',room:'',floor:'',timep:''})
   const [startDate, setStartDate] = useState(new Date());
   const updateField = e => {
     setrsform({
@@ -42,16 +41,26 @@ export default function Home() {
 
         <div className="h-4/5 w-4/5 rounded-2xl mt-10 ml-10  flex flex-col bg-blue-200 bg-opacity-40 border-r-2 ">
           <div className=" h-4/5 mt-10 ">
+          
             <div className="mt-8 ml-20 flex flex-row ">
-              <select className="w-2/5 mr-10" required>
-                <option value="" disabled selected>Choose room</option>
+              
+              <select className="w-2/5 mr-10" 
+                onChange={updateField}
+                name='room'>
+                <option 
+                >Choose room</option>
                 {room.map((option) => (<option key={room.id} value={option.roomn}>{option.roomn}</option>))}
               </select>
-              <select className="w-2/5" required>
-                <option value="" disabled selected>Choose floor</option>
+              <select 
+              className="w-2/5"
+              onChange={updateField}
+              name='floor'>
+                <option
+                >Choose floor</option>
                 {floor.map((option) => (<option key={option} value={option}>{option}</option>))}
               </select>
             </div>
+          
             <div className=" mt-10 ml-48 h-50 w-80 pl-10 pr-2 pt-2">
               <div >
                 <ImageSlide imagedata={imagedata} />
@@ -60,13 +69,25 @@ export default function Home() {
             <div className="flex flex-row items-center ml-10 mt-10">
               <div className="ml-8">Choose day :</div>
               <div className="ml-8">
-              <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} minDate={subDays(new Date(), 0)}/>
+              <DatePicker 
+              selected={startDate} 
+              onChange={(date) => {  
+                setStartDate(date)
+                console.log(startDate.getFullYear)}} 
+              
+              name='dayp'
+              value={startDate}
+              />
+              
               </div>
             </div>
             <div className="flex flex-row mt-10 ml-10 items-center">
 
               <div className="ml-8">Choose time period :</div>
-              <select className="w-2/5 ml-8" required>
+              <select className="w-2/5 ml-8"
+              onChange={updateField}
+              name='timep'
+              >
                 <option value="" disabled selected>Choose time peroid</option>
                 {time.map((option) => (<option key={time.id} value={time.peroid}>{option.peroid}</option>))}
               </select>
@@ -131,7 +152,7 @@ export default function Home() {
             </div>
             <div className="mt-8">
             <div>
-            <Cfreserve fname={rsform.fname} lname={rsform.lname}email={rsform.email}reason={rsform.reason}telnum={rsform.telnum} />
+            <Cfreserve fname={rsform.fname} lname={rsform.lname}email={rsform.email}reason={rsform.reason}telnum={rsform.telnum}room={rsform.room}floor={rsform.floor}dayp={startDate.toDateString}timep={rsform.timep}/>
             </div>
             </div>
           </form>

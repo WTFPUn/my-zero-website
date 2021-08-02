@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Transition, Menu } from '@headlessui/react'
 import Image from 'next/image'
-import logoimg from "@publics/favicon.ico"
+import logoimg from "@public/favicon.ico"
 import Signup from "@components/Signup"
 import Signin from "@components/Signin"
 
